@@ -20,7 +20,7 @@ void myInit(void) {
 
 void display_circle(float radius) {
     glBegin(GL_POINTS);
-    for (float i = 0; i < 2 * pi; i += 0.005) {
+    for (float i = 0; i < 2 * pi; i += 0.001) {
         float x = radius * cos(i);
         float y = radius * sin(i);
 
@@ -35,8 +35,8 @@ void display_line(float x1, float y1, float x2, float y2) {
 
     if (abs(y2 - y1) > length) {
         length = abs(y2 - y1);
-        Xinc = (x2 - x1)/length;
-        Yinc = (y2 - y1)/length;
+        Xinc = (x2 - x1) / length;
+        Yinc = (y2 - y1) / length;
         X = x1;
         Y = y1;
     }
@@ -50,9 +50,9 @@ void display_line(float x1, float y1, float x2, float y2) {
 }
 
 void display_dagaz(float side) {
-    float right = side/2;
+    float right = side / 2;
     float left = -right;
-    float top = side/2;
+    float top = side / 2;
     float bottom = -top;
 
     glBegin(GL_LINE_LOOP);
@@ -66,9 +66,9 @@ void display_dagaz(float side) {
 }
 
 void display_square(float side) {
-    float right = side/2;
+    float right = side / 2;
     float left = -right;
-    float top = side/2;
+    float top = side / 2;
     float bottom = -top;
 
     glBegin(GL_LINE_LOOP);
@@ -84,11 +84,15 @@ void display_square(float side) {
 void display(void) {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    glColor3f(0.3, 0.7, 1.0);
-    display_circle(250);
+    for (int i = 0; i < 9; i++) {
+        glColor3f(0.3 - 0.04 * i, 0.7 - 0.05 * i, 1.0 - 0.05 * i);
+        display_circle(250 + 2.2 * i);
+    }
 
-    glColor3f(1.0,0.3 , 0.7);
-    display_square(280);
+    for (int i = 0; i < 9; i++) {
+        glColor3f(1.0 - 0.05 * i, 0.3 - 0.04 * i, 0.7 - 0.05 * i);
+        display_square(280 + 2.2 * i);
+    }
 
     glColor3f(1.0, 0.7, 0.3);
     display_dagaz(150);
