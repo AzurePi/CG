@@ -67,9 +67,9 @@ void drawSphere(GLuint texture) {
     glPushMatrix();
 
     if (texture == wood_texture)
-        glTranslatef(0.5,0.5,0);
+        glTranslatef(0.5, 0.5, 0);
     else
-        glTranslatef(-0.5,-0.5,0);
+        glTranslatef(-0.5, -0.5, 0);
 
     // Desenha uma esfera usando uma malha
     glColor3f(1.0, 1.0, 1.0); // Define a cor como branca para usar a textura
