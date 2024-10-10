@@ -19,10 +19,14 @@ target_link_libraries(esferas ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
 
 # -------------------------------------------------------------------------
 
-add_executable(composicao projeto_composicao/esfera.c
+add_executable(composicao
+        projeto_composicao/main.c
+        projeto_composicao/esfera.h
+        projeto_composicao/cone.h
+        projeto_composicao/esfera.c
+        projeto_composicao/cubo.h
         projeto_composicao/cubo.c
-        projeto_composicao/cone.c
-        projeto_composicao/Hierarquia3D-basico.c)
+        projeto_composicao/cone.c)
 target_link_libraries(composicao ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
 
 
