@@ -47,18 +47,6 @@ void loadTexture(const char *filename, GLuint *textureID) {
     stbi_image_free(data); // Libera a memória
 }
 
-// Função para desenhar o caule da maçã
-void drawStem() {
-    glColor3f(0.4, 0.2, 0.0); // Cor do caule
-    glPushMatrix();
-    glTranslatef(0.0, 0.6, 0.0); // Posição do caule
-    glRotatef(-90, 1.0, 0.0, 0.0); // Rotacionar para a orientação correta
-    GLUquadric *quad = gluNewQuadric();
-    gluCylinder(quad, 0.05, 0.05, 0.3, 30, 30); // Desenha um cilindro como caule
-    gluDeleteQuadric(quad);
-    glPopMatrix();
-}
-
 
 void drawSphere(GLuint texture) {
     glEnable(GL_TEXTURE_2D);
