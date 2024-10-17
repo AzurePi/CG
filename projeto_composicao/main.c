@@ -97,7 +97,9 @@ void display(void) {
 
     PosicUser();
 
-    glRotatef(AngY, AngX, 0, 1);
+    glRotatef(AngY, 0, 0, 1);
+    glRotatef(AngX, 1, 0, 0);
+
     DesenhaCenario(1);
 
     glutSwapBuffers();
@@ -109,7 +111,16 @@ void keyboard(unsigned char key) {
     case ' ': fazCalculoPonto = 1;
         break;
     case 'a':
-    case 'A': AngY += 5;
+    case 'A': AngY += 2.5;
+        break;
+    case 'd':
+    case 'D': AngY -= 2.5;
+        break;
+    case 'w':
+    case 'W': AngX += 2.5;
+        break;
+    case 's':
+    case 'S': AngX -= 2.5;
         break;
     default: break;
     }
