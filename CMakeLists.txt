@@ -29,4 +29,14 @@ add_executable(composicao
         projeto_composicao/cone.c)
 target_link_libraries(composicao ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
 
+# ---------------------------------------------------------------------------
 
+add_executable(rotacao
+        projeto_rotacao/main.c
+        projeto_rotacao/esfera.h
+        projeto_rotacao/cone.h
+        projeto_rotacao/esfera.c
+        projeto_rotacao/cubo.h
+        projeto_rotacao/cubo.c
+        projeto_rotacao/cone.c)
+target_link_libraries(rotacao ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
