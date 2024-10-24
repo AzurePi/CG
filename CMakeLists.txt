@@ -40,3 +40,11 @@ add_executable(rotacao
         rotacao/cubo.c
         rotacao/cone.c)
 target_link_libraries(rotacao ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
+
+# ---------------------------------------------------------------------------
+
+add_executable(bule
+        bule/bule.c
+        bule/bule.h
+)
+target_link_libraries(bule ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
