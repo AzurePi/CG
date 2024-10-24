@@ -1,7 +1,11 @@
 #include "esfera.h"
 
 void DesenharEsfera(void) {
-    glColor3f(0.4, 1, 0.2); // Define a cor como branca para usar a textura
+    glColor3f(0.4, 1, 0.2);
     glLineWidth(1);
-    glutSolidSphere(0.35, 50, 50); // Desenha uma esfera com a textura especificada
+    glutSolidSphere(0.7, 50, 50);
+
+    glColor3f(1, 0.2, 0.4);
+    glLineWidth(2);
+    glutWireSphere(0.7, 15, 15);
 }

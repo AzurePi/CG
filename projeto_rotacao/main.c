@@ -72,6 +72,9 @@ void DesenhaCenario() {
     // Esfera
     glPushMatrix();
     glTranslatef(-3.0f, 0.0f, -1.0f);
+     glRotatef(esfera_rotacao_X, 1, 0, 0);
+    glRotatef(esfera_rotacao_Y, 0, 1, 0);
+    glRotatef(esfera_rotacao_Z, 0, 0, 1);
     DesenharEsfera();
     glPopMatrix();
 
@@ -111,13 +114,17 @@ void display(void) {
     PosicUser();
     DesenhaCenario();
 
-    cone_rotacao_X += 0.4;
-    cone_rotacao_Y += 0.2;
-    cone_rotacao_Z += 0.4;
+    esfera_rotacao_X += 0.2;
+    esfera_rotacao_Y += 0.4;
+    esfera_rotacao_Z += 0.3;
 
     cubo_rotacao_X += 0.1;
     cubo_rotacao_Y += 0.2;
     cubo_rotacao_Z += 0.5;
+
+    cone_rotacao_X += 0.4;
+    cone_rotacao_Y += 0.2;
+    cone_rotacao_Z += 0.4;
 
     glutSwapBuffers();
 }
@@ -148,7 +155,7 @@ int main(int argc, char **argv) {
 
     glutInitWindowPosition(0, 0);
     glutInitWindowSize(700, 500);
-    glutCreateWindow("Projeto CG - Composição");
+    glutCreateWindow("Projeto CG - Rotação");
 
     init();
 
