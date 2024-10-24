@@ -20,23 +20,23 @@ target_link_libraries(esferas ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
 # ---------------------------------------------------------------------------
 
 add_executable(composicao
-        projeto_composicao/main.c
-        projeto_composicao/esfera.h
-        projeto_composicao/cone.h
-        projeto_composicao/esfera.c
-        projeto_composicao/cubo.h
-        projeto_composicao/cubo.c
-        projeto_composicao/cone.c)
+        composicao/main.c
+        composicao/esfera.h
+        composicao/cone.h
+        composicao/esfera.c
+        composicao/cubo.h
+        composicao/cubo.c
+        composicao/cone.c)
 target_link_libraries(composicao ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
 
 # ---------------------------------------------------------------------------
 
 add_executable(rotacao
-        projeto_rotacao/main.c
-        projeto_rotacao/esfera.h
-        projeto_rotacao/cone.h
-        projeto_rotacao/esfera.c
-        projeto_rotacao/cubo.h
-        projeto_rotacao/cubo.c
-        projeto_rotacao/cone.c)
+        rotacao/main.c
+        rotacao/esfera.h
+        rotacao/cone.h
+        rotacao/esfera.c
+        rotacao/cubo.h
+        rotacao/cubo.c
+        rotacao/cone.c)
 target_link_libraries(rotacao ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
