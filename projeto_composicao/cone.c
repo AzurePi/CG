@@ -31,7 +31,7 @@ void DesenharCone(const Vector3f *d, const Vector3f *a, const float h, const flo
     float angInc; // incremento angular do desenho da base
     Vector3f pts[n]; // vetor dos pontos da base
 
-    // cálculo da baes do cone
+    // cálculo da base do cone
     c.x = a->x + (-d->x * h);
     c.y = a->y + (-d->y * h);
     c.z = a->z + (-d->z * h);

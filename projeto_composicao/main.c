@@ -67,7 +67,7 @@ void DesenhaCenario() {
     // Esfera
     glPushMatrix();
     glTranslatef(-3.0f, 0.0f, -1.0f);
-    DesenharEsfera(0);
+    DesenharEsfera();
     glPopMatrix();
 
     // Cubo
