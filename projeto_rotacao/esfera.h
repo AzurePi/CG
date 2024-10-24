@@ -2,8 +2,8 @@
 #define ESFERA_H
 
 #include <GL/gl.h>
-#include <GL/glu.h>
+#include <GL/freeglut_std.h>
 
-void DesenharEsfera(GLuint texture);
+void DesenharEsfera(void);
 
 #endif //ESFERA_H
