@@ -3,18 +3,9 @@
 #include <math.h>
 #include <GL/glut.h>
 
-
-#ifdef WIN32
-#include <windows.h>
-#endif
-
 GLfloat AspectRatio;
-GLfloat AngY, AngX;
-int fazCalculoPonto;
+GLfloat fazCalculoPonto;
 
-GLfloat AnguloDeVisao;
-GLfloat Obs[3];
-GLfloat Alvo[3];
 
 // Inicializa os parâmetros globais de OpenGL e do cenário
 void init(void) {
@@ -23,29 +14,15 @@ void init(void) {
     glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
-
-    Obs[0] = 0;
-    Obs[1] = 3;
-    Obs[2] = 3;
-    Alvo[0] = 0;
-    Alvo[1] = 0;
-    Alvo[2] = -1;
-    AnguloDeVisao = 70;
-    AngY = 0;
-    fazCalculoPonto = 0;
 }
 
 // Faz o posicionamento do observador no cenário.
 void PosicUser() {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(AnguloDeVisao, AspectRatio, 0.01, 200);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(Obs[0], Obs[1], Obs[2],
-        Alvo[0], Alvo[1], Alvo[2],
-        0.0f, 1.0f, 0.0f);
 }
 
 
@@ -55,21 +32,19 @@ void reshape(int w, int h) {
         h = 1;
 
     AspectRatio = 1.0f * w / h;
-
-    glViewport(0, 0, w, h);
     PosicUser();
 }
 
 
 void DesenhaCenario() {
-    // Esfera
     glPushMatrix();
-    glTranslatef(-3.0f, 0.0f, -1.0f);
 
-    glutWireTeapot(1);
+    glColor3f(0, 0.5, 1);
+    glutSolidTeapot(0.3);
 
-
-    glPopMatrix();
+    glColor3f(0, 0.5, 1);
+    glTranslatef(3, 0, 0);
+    glutSolidTeapot(0.3);
 
     glPopMatrix();
 }
@@ -78,12 +53,10 @@ void DesenhaCenario() {
 void display(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    glViewport(0, 0, 600, 500);
+
     PosicUser();
-
-    glRotatef(AngY, 0, 0, 1);
-    glRotatef(AngX, 1, 0, 0);
-
-    DesenhaCenario(1);
+    DesenhaCenario();
 
     glutSwapBuffers();
 }
@@ -101,7 +74,7 @@ void arrow_keys(int a_keys) {
     switch (a_keys) {
     case GLUT_KEY_UP: glutFullScreen();
         break;
-    case GLUT_KEY_DOWN: glutInitWindowSize(700, 500);
+    case GLUT_KEY_DOWN: glutInitWindowSize(600, 500);
         break;
     default: break;
     }
@@ -113,8 +86,8 @@ int main(int argc, char **argv) {
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGB);
 
     glutInitWindowPosition(0, 0);
-    glutInitWindowSize(700, 500);
-    glutCreateWindow("Projeto CG - Composição");
+    glutInitWindowSize(600, 500);
+    glutCreateWindow("Projeto CG - Bule");
 
     init();
 
