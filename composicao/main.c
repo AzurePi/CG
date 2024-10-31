@@ -79,6 +79,7 @@ void DesenhaCenario() {
     // Cone
     glPushMatrix();
     glTranslatef(3.0f, 0.0f, -1.0f);
+    glRotatef(45, 1, 1, 0);
 
     Vector3f direcao = {0.0f, 1.0f, 0.0f}; // direção apontando para cima no eixo Y
     Vector3f vertice = {0.0f, 1.0f, 0.0f}; // vértice do cone na origem (após translação)

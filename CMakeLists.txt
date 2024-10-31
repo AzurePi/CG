@@ -48,3 +48,10 @@ add_executable(bule
         bule/bule.h
 )
 target_link_libraries(bule ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
+
+# ---------------------------------------------------------------------------
+
+add_executable(transf
+        transformações/teapot.c
+)
+target_link_libraries(transf ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
