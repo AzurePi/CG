@@ -52,6 +52,6 @@ target_link_libraries(bule ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
 # ---------------------------------------------------------------------------
 
 add_executable(transf
-        transformações/teapot.c
+        transformações/bules.c
 )
 target_link_libraries(transf ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
