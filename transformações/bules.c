@@ -1,18 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+
+#include <unistd.h>
+
 #include <GL/glut.h>
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "../stb_image.h"
+
+GLuint textureID;
 GLfloat AspectRatio;
 
+// Função para carregar a textura
+void CarregarTextura() {
+    int largura, altura, canais;
+    unsigned char *data = stbi_load("textura.jpg", &largura, &altura, &canais, 0);
+    if (data == NULL) {
+               printf("Erro ao carregar a imagem!\n");
+        exit(1);
+    }
+
+    // Gera um ID de textura e configura os parâmetros
+    glGenTextures(1, &textureID);
+    glBindTexture(GL_TEXTURE_2D, textureID);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, largura, altura, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    stbi_image_free(data); // Libera a memória da imagem
+}
 
 // Inicializa os parâmetros globais de OpenGL e do cenário
 void init(void) {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Fundo de tela preto
 
-    glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
+    glEnable(GL_TEXTURE_2D);
+    CarregarTextura();
 }
 
 // Faz o posicionamento do observador no cenário.
@@ -28,7 +54,8 @@ void PosicUser() {
 
 // trata o redimensionamento da janela OpenGL
 void reshape(int w, int h) {
-    if (h == 0) h = 1;
+    if (h == 0)
+        h = 1;
     AspectRatio = 1.0f * w / h;
     glViewport(0, 0, w, h);
     PosicUser();
@@ -36,6 +63,7 @@ void reshape(int w, int h) {
 
 
 void DesenhaCenario() {
+    glBindTexture(GL_TEXTURE_2D, textureID);
     float size = 0.6;
 
     // Primeiro bule
@@ -45,9 +73,6 @@ void DesenhaCenario() {
     glRotatef(0, 0, 1, 0);
     glRotatef(0, 0, 0, 1);
 
-    glColor3f(0, 0.5, 1);
-    glutWireTeapot(size);
-    glColor3f(1, 0.5, 0);
     glutSolidTeapot(size);
 
     glPopMatrix();
@@ -59,9 +84,6 @@ void DesenhaCenario() {
     glRotatef(90, 0, 1, 0);
     glRotatef(0, 0, 0, 1);
 
-    glColor3f(0, 0.5, 1);
-    glutWireTeapot(size);
-    glColor3f(1, 0.5, 0);
     glutSolidTeapot(size);
 
     glPopMatrix();
@@ -73,9 +95,6 @@ void DesenhaCenario() {
     glRotatef(00, 0, 1, 0);
     glRotatef(90, 0, 0, 1);
 
-    glColor3f(0, 0.5, 1);
-    glutWireTeapot(size);
-    glColor3f(1, 0.5, 0);
     glutSolidTeapot(size);
 
     glPopMatrix();
@@ -87,9 +106,6 @@ void DesenhaCenario() {
     glRotatef(0, 0, 1, 0);
     glRotatef(0, 0, 0, 1);
 
-    glColor3f(0, 0.5, 1);
-    glutWireTeapot(size);
-    glColor3f(1, 0.5, 0);
     glutSolidTeapot(size);
 
     glPopMatrix();
@@ -104,12 +120,8 @@ void display(void) {
 }
 
 void keyboard(unsigned char key) {
-    if (key == 27) exit(0);
-}
-
-void arrow_keys(int a_keys) {
-    if (a_keys == GLUT_KEY_UP) glutFullScreen();
-    if (a_keys == GLUT_KEY_DOWN) glutReshapeWindow(600, 500);
+    if (key == 27)
+        exit(0);
 }
 
 
@@ -119,14 +131,12 @@ int main(int argc, char **argv) {
 
     glutInitWindowPosition(0, 0);
     glutInitWindowSize(900, 500);
-    glutCreateWindow("Projeto CG - Bule");
+    glutCreateWindow("Projeto CG - Bules");
 
     init();
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
-    glutKeyboardFunc(keyboard);
-    glutSpecialFunc(arrow_keys);
     glutIdleFunc(display);
 
     glutMainLoop();

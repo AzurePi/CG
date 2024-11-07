@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "../stb_image.h"
 
 // Variáveis para controle da iluminação e rotação da cena
 GLfloat light_pos[] = {1.0, 1.0, 1.0, 0.0}; // Posição da luz
