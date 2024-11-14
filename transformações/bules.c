@@ -9,7 +9,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "../stb_image.h"
 
-GLuint textureID;
+GLuint maca_textureID;
 GLfloat AspectRatio;
 
 // Função para carregar a textura
@@ -22,8 +22,8 @@ void CarregarTextura() {
     }
 
     // Gera um ID de textura e configura os parâmetros
-    glGenTextures(1, &textureID);
-    glBindTexture(GL_TEXTURE_2D, textureID);
+    glGenTextures(1, &maca_textureID);
+    glBindTexture(GL_TEXTURE_2D, maca_textureID);
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, largura, altura, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -63,7 +63,7 @@ void reshape(int w, int h) {
 
 
 void DesenhaCenario() {
-    glBindTexture(GL_TEXTURE_2D, textureID);
+    glBindTexture(GL_TEXTURE_2D, maca_textureID);
     float size = 0.6;
 
     // Primeiro bule

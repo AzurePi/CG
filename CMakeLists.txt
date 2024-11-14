@@ -61,6 +61,7 @@ target_link_libraries(rotacao ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
 add_executable(bule
         bule/bule.c
         bule/bule.h
+        projeto_final/main.c
 )
 target_link_libraries(bule ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
 
@@ -79,3 +80,21 @@ add_custom_command(
 )
 
 target_link_libraries(transf ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
+
+# ---------------------------------------------------------------------------
+
+add_executable(projeto
+        stb_image.h
+        projeto_final/main.c
+)
+
+set(MACA_PATH "${CMAKE_CURRENT_SOURCE_DIR}/projeto_final/maca.jpg")
+set(BOLA_PATH "${CMAKE_CURRENT_SOURCE_DIR}/projeto_final/bola.jpg")
+add_custom_command(
+        TARGET projeto POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+        "${MACA_PATH}" "$<TARGET_FILE_DIR:projeto>"
+        "${BOLA_PATH}" "$<TARGET_FILE_DIR:projeto>"
+)
+
+target_link_libraries(projeto ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} m)
